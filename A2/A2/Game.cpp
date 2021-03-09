@@ -66,7 +66,7 @@ void Game::Update(const GameTimer& gt)
 {
 	OnKeyboardInput(gt);
 	mWorld.update(gt);
-	//UpdateCamera(gt);
+	UpdateCamera(gt);
 
 	// Cycle through the circular frame resource array.
 	mCurrFrameResourceIndex = (mCurrFrameResourceIndex + 1) % gNumFrameResources;
@@ -179,22 +179,15 @@ void Game::OnMouseMove(WPARAM btnState, int x, int y)
 
 void Game::OnKeyboardInput(const GameTimer& gt)
 {
-	const float dt = gt.DeltaTime();
-
-	mCamera.GetLook();
-	float tmin = 0;
-	float buffer = 0.5;
-	XMFLOAT3  oppositef3(-1, -1, -1);
-	XMVECTOR opposite = XMLoadFloat3(&oppositef3);
-
-	mCamera.UpdateViewMatrix();
+	
 }
 
 void Game::UpdateCamera(const GameTimer& gt)
 {
 	
-
-
+	mCamera.SetPosition(0, 0, -10);
+	mCamera.LookAt(mCamera.GetPosition3f(), mCamera.GetLook3f(), mCamera.GetUp3f());
+	mCamera.UpdateViewMatrix();
 }
 
 void Game::AnimateMaterials(const GameTimer& gt)

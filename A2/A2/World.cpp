@@ -41,28 +41,31 @@ void World::load()
 {
 	std::unique_ptr<Aircraft> player(new Aircraft(Aircraft::Eagle, mGame));
 	mPlayerAircraft = player.get();
-	mPlayerAircraft->setPosition(0, 0.1, 0.0);
-	mPlayerAircraft->setScale(0.5, 0.5, 0.5);
+	mPlayerAircraft->setPosition(0, -3, 0);
+	mPlayerAircraft->setWorldRotation(90 * XM_PI / 180, 0,  180 * XM_PI/180);
+	mPlayerAircraft->setScale(1,1,1);
 	mSceneGraph->attachChild(std::move(player));
 
 	std::unique_ptr<Aircraft> enemy1(new Aircraft(Aircraft::Raptor, mGame));
 	auto raptor = enemy1.get();
-	raptor->setPosition(0.5, 0, 1);
-	raptor->setScale(0.5f, 0.5f, 0.5f);
-	raptor->setWorldRotation(0, XM_PI, 0);
+	raptor->setPosition(0.5, 3, 0);
+	raptor->setWorldRotation(90 * XM_PI / 180, 0, 0);
+	raptor->setScale(1, 1, 1);
 	mSceneGraph->attachChild(std::move(enemy1));
 
 	std::unique_ptr<Aircraft> enemy2(new Aircraft(Aircraft::Raptor, mGame));
 	auto raptor2 = enemy2.get();
-	raptor2->setPosition(-0.5, 0, 1);
-	raptor->setScale(0.5f, 0.5f, 0.5f);
-	raptor2->setWorldRotation(0, XM_PI, 0);
+	raptor2->setPosition(-0.5, 3, 0);
+	raptor2->setWorldRotation(90 * XM_PI / 180, 0, 0);
+	raptor->setScale(1, 1, 1);
 	mSceneGraph->attachChild(std::move(enemy2));
 
 	std::unique_ptr<SpriteNode> backgroundSprite(new SpriteNode(mGame));
 	mBackground = backgroundSprite.get();
-	mBackground->setPosition(0, 0, 0.0);
+	mBackground->setPosition(0, 0, 1);
 	mBackground->setScale(10.0, 1.0, 200.0);
+	mBackground->setWorldRotation(90 * XM_PI/180 , 0, 0);
+	mBackground->setVelocity(0, -2);
 	mSceneGraph->attachChild(std::move(backgroundSprite));
 
 	mSceneGraph->build();
