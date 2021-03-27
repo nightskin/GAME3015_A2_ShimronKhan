@@ -146,7 +146,6 @@
     <ClCompile Include="..\..\Common\GameTimer.cpp" />
     <ClCompile Include="..\..\Common\GeometryGenerator.cpp" />
     <ClCompile Include="..\..\Common\MathHelper.cpp" />
-    <ClCompile Include="Aircraft.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FrameResource.cpp" />
@@ -167,7 +166,6 @@
     <ClInclude Include="..\..\Common\GeometryGenerator.h" />
     <ClInclude Include="..\..\Common\MathHelper.h" />
     <ClInclude Include="..\..\Common\UploadBuffer.h" />
-    <ClInclude Include="Aircraft.hpp" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Entity.hpp" />
     <ClInclude Include="FrameResource.h" />

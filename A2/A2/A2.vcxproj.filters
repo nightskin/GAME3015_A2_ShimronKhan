@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Aircraft.cpp">
-      <Filter>UnAltered Files</Filter>
-    </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>UnAltered Files</Filter>
     </ClCompile>
@@ -68,9 +65,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Aircraft.hpp">
-      <Filter>UnAltered Files</Filter>
-    </ClInclude>
     <ClInclude Include="Entity.hpp">
       <Filter>UnAltered Files</Filter>
     </ClInclude>

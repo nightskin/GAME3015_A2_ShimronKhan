@@ -1,6 +1,5 @@
 #pragma once
 #include "SceneNode.hpp"
-#include "Aircraft.hpp"
 #include "SpriteNode.h"
 #include "World.hpp"
 #include "Player.h"
