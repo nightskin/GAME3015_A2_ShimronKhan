@@ -1,1 +1,25 @@
-﻿  A2.vcxproj -> C:\Users\angel\Desktop\School\Game Engine Dev 2\GAME3015_A2_ShimronKhan\A2\x64\Debug\A2.exe
+﻿  Camera.cpp
+  d3dApp.cpp
+  d3dUtil.cpp
+  DDSTextureLoader.cpp
+  GameTimer.cpp
+  GeometryGenerator.cpp
+  MathHelper.cpp
+  Enemy.cpp
+C:\Users\angel\Desktop\School\Game Engine Dev 2\GAME3015_A2_ShimronKhan\A2\A2\Enemy.cpp(19,54): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+  Entity.cpp
+  FrameResource.cpp
+  Game.cpp
+C:\Users\angel\Desktop\School\Game Engine Dev 2\GAME3015_A2_ShimronKhan\A2\A2\Game.cpp(24,24): warning C4305: 'argument': truncation from 'double' to 'float'
+  main.cpp
+  Player.cpp
+C:\Users\angel\Desktop\School\Game Engine Dev 2\GAME3015_A2_ShimronKhan\A2\A2\Player.cpp(18,54): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+  SceneNode.cpp
+  SpriteNode.cpp
+C:\Users\angel\Desktop\School\Game Engine Dev 2\GAME3015_A2_ShimronKhan\A2\A2\SpriteNode.cpp(20,54): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+  Input.cpp
+  World.cpp
+  Generating Code...
+C:\Users\angel\Desktop\School\Game Engine Dev 2\GAME3015_A2_ShimronKhan\A2\A2\Input.cpp(47): warning C4715: 'ListenerManager::CurrentEvent': not all control paths return a value
+C:\Users\angel\Desktop\School\Game Engine Dev 2\GAME3015_A2_ShimronKhan\A2\A2\Input.cpp(36): warning C4715: 'ListenerManager::PrevEvent': not all control paths return a value
+  A2.vcxproj -> C:\Users\angel\Desktop\School\Game Engine Dev 2\GAME3015_A2_ShimronKhan\A2\x64\Debug\A2.exe

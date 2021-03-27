@@ -63,6 +63,9 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Added or Modified Files</Filter>
     </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Added or Modified Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.hpp">
@@ -114,6 +117,9 @@
       <Filter>Added or Modified Files</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
+      <Filter>Added or Modified Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
       <Filter>Added or Modified Files</Filter>
     </ClInclude>
   </ItemGroup>
