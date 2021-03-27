@@ -3,7 +3,7 @@
 World::World(Game* game)
 	: mSceneGraph(new SceneNode(game))
 	, mGame(game)
-	, mPlayerAircraft(nullptr)
+	, mPlayer(nullptr)
 	, mBackground(nullptr)
 	, mWorldBounds(-1.5f, 1.5f, 200.0f, 0.0f) //Left, Right, Down, Up
 	, mSpawnPosition(0.f, 0.f)
@@ -23,12 +23,12 @@ void World::GetInputs(const GameTimer& gt)
 
 	if (listenerManager.CheckInput('D'))
 	{
-		mPlayerAircraft->move(speed, 0, 0);
+		mPlayer->move(speed, 0, 0);
 	}
 	
 	if (listenerManager.CheckInput('A'))
 	{
-		mPlayerAircraft->move(-speed, 0, 0);
+		mPlayer->move(-speed, 0, 0);
 	}
 }
 
@@ -39,21 +39,21 @@ void World::draw()
 
 void World::load()
 {
-	std::unique_ptr<Aircraft> player(new Aircraft(Aircraft::Eagle, mGame));
-	mPlayerAircraft = player.get();
-	mPlayerAircraft->setPosition(0, -3, 0);
-	mPlayerAircraft->setWorldRotation(90 * XM_PI / 180, 0,  180 * XM_PI/180);
-	mPlayerAircraft->setScale(1,1,1);
+	std::unique_ptr<Player> player(new Player( mGame));
+	mPlayer = player.get();
+	mPlayer->setPosition(0, -3, 0);
+	mPlayer->setWorldRotation(90 * XM_PI / 180, 0,  180 * XM_PI/180);
+	mPlayer->setScale(1,1,1);
 	mSceneGraph->attachChild(std::move(player));
 
-	std::unique_ptr<Aircraft> enemy1(new Aircraft(Aircraft::Raptor, mGame));
+	std::unique_ptr<Enemy> enemy1(new Enemy( mGame));
 	auto raptor = enemy1.get();
 	raptor->setPosition(0.5, 3, 0);
 	raptor->setWorldRotation(90 * XM_PI / 180, 0, 0);
 	raptor->setScale(1, 1, 1);
 	mSceneGraph->attachChild(std::move(enemy1));
 
-	std::unique_ptr<Aircraft> enemy2(new Aircraft(Aircraft::Raptor, mGame));
+	std::unique_ptr<Enemy> enemy2(new Enemy( mGame));
 	auto raptor2 = enemy2.get();
 	raptor2->setPosition(-0.5, 3, 0);
 	raptor2->setWorldRotation(90 * XM_PI / 180, 0, 0);

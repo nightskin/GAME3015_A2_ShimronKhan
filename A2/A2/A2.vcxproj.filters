@@ -1,40 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="FrameWork">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Engine">
+    <Filter Include="UnAltered Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Added or Modified Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Aircraft.cpp">
-      <Filter>Engine</Filter>
+      <Filter>UnAltered Files</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
-      <Filter>Engine</Filter>
+      <Filter>UnAltered Files</Filter>
     </ClCompile>
     <ClCompile Include="FrameResource.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Engine</Filter>
+      <Filter>UnAltered Files</Filter>
     </ClCompile>
     <ClCompile Include="SceneNode.cpp">
-      <Filter>Engine</Filter>
+      <Filter>UnAltered Files</Filter>
     </ClCompile>
     <ClCompile Include="SpriteNode.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="World.cpp">
-      <Filter>Engine</Filter>
+      <Filter>UnAltered Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Common\Camera.cpp">
       <Filter>FrameWork</Filter>
@@ -58,30 +52,36 @@
       <Filter>FrameWork</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Added or Modified Files</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>Added or Modified Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Added or Modified Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Added or Modified Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aircraft.hpp">
-      <Filter>Engine</Filter>
+      <Filter>UnAltered Files</Filter>
     </ClInclude>
     <ClInclude Include="Entity.hpp">
-      <Filter>Engine</Filter>
+      <Filter>UnAltered Files</Filter>
     </ClInclude>
     <ClInclude Include="FrameResource.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.hpp">
-      <Filter>Engine</Filter>
+      <Filter>UnAltered Files</Filter>
     </ClInclude>
     <ClInclude Include="SceneNode.hpp">
-      <Filter>Engine</Filter>
+      <Filter>UnAltered Files</Filter>
     </ClInclude>
     <ClInclude Include="SpriteNode.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="World.hpp">
-      <Filter>Engine</Filter>
+      <Filter>UnAltered Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Common\Camera.h">
       <Filter>FrameWork</Filter>
@@ -109,6 +109,18 @@
     </ClInclude>
     <ClInclude Include="..\..\Common\UploadBuffer.h">
       <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Added or Modified Files</Filter>
+    </ClInclude>
+    <ClInclude Include="World.hpp">
+      <Filter>Added or Modified Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.hpp">
+      <Filter>Added or Modified Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Added or Modified Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -12,9 +12,6 @@ Aircraft::Aircraft(Type type, Game* game) : Entity(game)
 	case (Raptor):
 		mSprite = "Raptor";
 		break;
-	default:
-		mSprite = "Eagle";
-		break;
 	}
 }
 

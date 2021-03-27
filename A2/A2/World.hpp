@@ -3,6 +3,8 @@
 #include "Aircraft.hpp"
 #include "SpriteNode.h"
 #include "World.hpp"
+#include "Player.h"
+#include "Enemy.h"
 
 struct Listener
 {
@@ -51,7 +53,7 @@ private:
 	XMFLOAT4							mWorldBounds;
 	XMFLOAT2		    				mSpawnPosition;
 	float								mScrollSpeed;
-	Aircraft*							mPlayerAircraft;
+	Player*								mPlayer;
 	SpriteNode*							mBackground;
-	Aircraft*							mEnemy;
+	Enemy*								mEnemy;
 };

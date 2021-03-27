@@ -2,8 +2,7 @@
 #include "Entity.hpp"
 #include <string>
 
-class Aircraft :
-    public Entity
+class Aircraft : public Entity
 {
 public:
 	enum Type
@@ -11,17 +10,11 @@ public:
 		Eagle,
 		Raptor,
 	};
-
-
 public:
 	Aircraft(Type type, Game* game);
-
-
 private:
 	virtual void		drawCurrent() const;
 	virtual void		buildCurrent();
-
-
 private:
 	Type				mType;
 	std::string			mSprite;
