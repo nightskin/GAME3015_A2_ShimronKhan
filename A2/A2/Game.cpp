@@ -164,17 +164,7 @@ void Game::OnMouseUp(WPARAM btnState, int x, int y)
 
 void Game::OnMouseMove(WPARAM btnState, int x, int y)
 {
-	if ((btnState & MK_LBUTTON) != 0)
-	{
-		// Make each pixel correspond to a quarter of a degree.
-		float dx = XMConvertToRadians(0.25f * static_cast<float>(x - mLastMousePos.x));
-		float dy = XMConvertToRadians(0.25f * static_cast<float>(y - mLastMousePos.y));
-
-		mCamera.Pitch(dy);
-		mCamera.RotateY(dx);
-	}
-	mLastMousePos.x = x;
-	mLastMousePos.y = y;
+	
 }
 
 void Game::OnKeyboardInput(const GameTimer& gt)
@@ -352,6 +342,16 @@ void Game::LoadTextures()
 
 	mTextures[SelectTex->Name] = std::move(SelectTex);
 
+	//Selector Tex
+	auto InstructionTex = std::make_unique<Texture>();
+	InstructionTex->Name = "InstructionTex";
+	InstructionTex->Filename = L"../../Textures/Instructions.dds";
+	ThrowIfFailed(DirectX::CreateDDSTextureFromFile12(md3dDevice.Get(),
+		mCommandList.Get(), InstructionTex->Filename.c_str(),
+		InstructionTex->Resource, InstructionTex->UploadHeap));
+
+	mTextures[InstructionTex->Name] = std::move(InstructionTex);
+
 }
 
 void Game::BuildRootSignature()
@@ -402,7 +402,7 @@ void Game::BuildDescriptorHeaps()
 	// Create the SRV heap.
 	//
 	D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};
-	srvHeapDesc.NumDescriptors = 7;
+	srvHeapDesc.NumDescriptors = 8;
 	srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
 	srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
 	ThrowIfFailed(md3dDevice->CreateDescriptorHeap(&srvHeapDesc, IID_PPV_ARGS(&mSrvDescriptorHeap)));
@@ -419,6 +419,7 @@ void Game::BuildDescriptorHeaps()
 	auto PauseTex = mTextures["PauseTex"]->Resource;
 	auto SelectTex = mTextures["SelectorTex"]->Resource;
 	auto TitleTex = mTextures["TitleTex"]->Resource;
+	auto InstructionTex = mTextures["InstructionTex"]->Resource;
 
 	D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
 
@@ -473,6 +474,11 @@ void Game::BuildDescriptorHeaps()
 	hDescriptor.Offset(1, mCbvSrvDescriptorSize);
 	srvDesc.Format = TitleTex->GetDesc().Format;
 	md3dDevice->CreateShaderResourceView(TitleTex.Get(), &srvDesc, hDescriptor);
+
+	//Title Descriptor
+	hDescriptor.Offset(1, mCbvSrvDescriptorSize);
+	srvDesc.Format = InstructionTex->GetDesc().Format;
+	md3dDevice->CreateShaderResourceView(InstructionTex.Get(), &srvDesc, hDescriptor);
 
 }
 
@@ -653,6 +659,14 @@ void Game::BuildMaterials()
 	Title->Roughness = 0.2f;
 
 	mMaterials["Title"] = std::move(Title);
+
+	auto Instruction = std::make_unique<Material>();
+	Instruction->Name = "Instruction";
+	Instruction->MatCBIndex = 7;
+	Instruction->DiffuseSrvHeapIndex = 7;
+	Instruction->DiffuseAlbedo = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+	Instruction->Roughness = 0.2f;
+
 }
 
 void Game::BuildRenderItems()
