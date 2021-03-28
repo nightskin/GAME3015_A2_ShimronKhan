@@ -3,8 +3,9 @@
 #include "TitleState.h"
 #include "MenuState.h"
 #include "GameState.h"
+#include "InstructionState.h"
 
-#include "States.h"
+#include "StateList.h"
 
 class World 
 {
@@ -30,6 +31,7 @@ private:
 	GameState* mGameState;
 	TitleState* mTitleState;
 	MenuState* mMenuState;
+	InstructionState* mInstructionState;
 
 	std::array<SceneNode*, LayerCount> mSceneLayers;
 	ListenerManager listenerManager;

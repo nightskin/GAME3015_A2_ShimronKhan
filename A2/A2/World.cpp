@@ -12,9 +12,10 @@ World::World(Game* window)
 	mGameState = new GameState(window);
 	mTitleState = new TitleState(window);
 	mMenuState = new MenuState(window);
+	mInstructionState = new InstructionState(window);
 
 	//start state
-	mCurrentState = States::MENU_STATE;
+	mCurrentState = States::INSTRUCTIONS_STATE;
 }
 
 void World::update(const GameTimer& gt)
@@ -32,9 +33,9 @@ void World::update(const GameTimer& gt)
 	{
 		mMenuState->update(gt);
 	}
-	else if (mCurrentState == States::PAUSE_STATE)
+	else if (mCurrentState == States::INSTRUCTIONS_STATE)
 	{
-
+		mInstructionState->update(gt);
 	}
 }
 
@@ -53,9 +54,9 @@ void World::getInputs(const GameTimer& gt)
 	{
 		mMenuState->getInputs(gt);
 	}
-	else if (mCurrentState == States::PAUSE_STATE)
+	else if (mCurrentState == States::INSTRUCTIONS_STATE)
 	{
-
+		mInstructionState->getInputs(gt);
 	}
 }
 
@@ -73,9 +74,9 @@ void World::draw()
 	{
 		mMenuState->draw();
 	}
-	else if (mCurrentState == States::PAUSE_STATE)
+	else if (mCurrentState == States::INSTRUCTIONS_STATE)
 	{
-
+		mInstructionState->draw();
 	}
 }
 
@@ -93,9 +94,9 @@ void World::load()
 	{
 		mMenuState->load();
 	}
-	else if (mCurrentState == States::PAUSE_STATE)
+	else if (mCurrentState == States::INSTRUCTIONS_STATE)
 	{
-
+		mInstructionState->load();
 	}
 }
 

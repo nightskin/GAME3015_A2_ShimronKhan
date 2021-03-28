@@ -78,6 +78,9 @@
     <ClCompile Include="MenuState.cpp">
       <Filter>Added Files</Filter>
     </ClCompile>
+    <ClCompile Include="InstructionState.cpp">
+      <Filter>Added Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.hpp">
@@ -125,7 +128,7 @@
     <ClInclude Include="Input.h">
       <Filter>Added Files</Filter>
     </ClInclude>
-    <ClInclude Include="States.h">
+    <ClInclude Include="StateList.h">
       <Filter>Added Files</Filter>
     </ClInclude>
     <ClInclude Include="GameState.h">
@@ -144,6 +147,9 @@
       <Filter>Altered Files</Filter>
     </ClInclude>
     <ClInclude Include="MenuState.h">
+      <Filter>Added Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionState.h">
       <Filter>Added Files</Filter>
     </ClInclude>
   </ItemGroup>
