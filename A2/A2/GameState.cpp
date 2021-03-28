@@ -5,7 +5,9 @@ GameState::GameState(Game* window)
 {
 	mGame = window;
 	mSceneGraph = new SceneNode(window);
-	mState = States::GAME_STATE;
+	mPlayer = nullptr;
+	mBackground = nullptr;
+	mEnemy = nullptr;
 }
 
 void GameState::update(const GameTimer& gt)
@@ -16,17 +18,7 @@ void GameState::update(const GameTimer& gt)
 
 void GameState::getInputs(const GameTimer& gt)
 {
-	float speed = 2.0f * gt.DeltaTime();
-
-	if (listenerManager.CheckInput('D'))
-	{
-		mPlayer->move(speed, 0, 0);
-	}
-
-	if (listenerManager.CheckInput('A'))
-	{
-		mPlayer->move(-speed, 0, 0);
-	}
+	mPlayer->input(gt);
 }
 
 void GameState::draw()
@@ -57,24 +49,15 @@ void GameState::load()
 	raptor->setScale(1, 1, 1);
 	mSceneGraph->attachChild(std::move(enemy2));
 
-	std::unique_ptr<SpriteNode> backgroundSprite(new SpriteNode(mGame));
+	std::unique_ptr<SpriteNode> backgroundSprite(new SpriteNode(mGame, "Desert"));
 	mBackground = backgroundSprite.get();
 	mBackground->setPosition(0, 0, 1);
-	mBackground->setScale(10.0, 1.0, 200.0);
+	mBackground->setScale(15.0, 1.0, 100.0);
 	mBackground->setWorldRotation(90 * XM_PI / 180, 0, 0);
 	mBackground->setVelocity(0, -2);
 	mSceneGraph->attachChild(std::move(backgroundSprite));
 
 	mSceneGraph->build();
 
-	//Create Listeners
-	Listener aKey;
-	aKey.key = 'A';
-	aKey.name = "AKey";
-	Listener dKey;
-	dKey.key = 'D';
-	dKey.name = "DKey";
-	// Add listeners to listener manager
-	listenerManager.AddListener(aKey);
-	listenerManager.AddListener(dKey);
+
 }

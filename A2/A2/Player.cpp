@@ -4,6 +4,32 @@
 Player::Player(Game* game) : Entity(game)
 {
 	mSprite = "Eagle";
+
+	//Create Listeners
+	Listener aKey;
+	aKey.key = 'A';
+	aKey.name = "AKey";
+	Listener dKey;
+	dKey.key = 'D';
+	dKey.name = "DKey";
+	// Add listeners to listener manager
+	listenerManager.AddListener(aKey);
+	listenerManager.AddListener(dKey);
+}
+
+void Player::input(const GameTimer& gt)
+{
+	float speed = 2.0f * gt.DeltaTime();
+
+	if (listenerManager.CheckInput('D'))
+	{
+		move(speed, 0, 0);
+	}
+
+	if (listenerManager.CheckInput('A'))
+	{
+		move(-speed, 0, 0);
+	}
 }
 
 void Player::drawCurrent() const

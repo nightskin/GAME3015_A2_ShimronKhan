@@ -24,9 +24,6 @@
     <ClCompile Include="SceneNode.cpp">
       <Filter>Unmodified Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteNode.cpp">
-      <Filter>Unmodified Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Common\Camera.cpp">
       <Filter>Never Touch Ever</Filter>
     </ClCompile>
@@ -69,6 +66,12 @@
     <ClCompile Include="GameState.cpp">
       <Filter>Added or Modified Files</Filter>
     </ClCompile>
+    <ClCompile Include="TitleState.cpp">
+      <Filter>Added or Modified Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteNode.cpp">
+      <Filter>Added or Modified Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.hpp">
@@ -78,9 +81,6 @@
       <Filter>Unmodified Files</Filter>
     </ClInclude>
     <ClInclude Include="SceneNode.hpp">
-      <Filter>Unmodified Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteNode.h">
       <Filter>Unmodified Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Common\Camera.h">
@@ -129,6 +129,12 @@
       <Filter>Added or Modified Files</Filter>
     </ClInclude>
     <ClInclude Include="GameState.h">
+      <Filter>Added or Modified Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleState.h">
+      <Filter>Added or Modified Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteNode.h">
       <Filter>Added or Modified Files</Filter>
     </ClInclude>
   </ItemGroup>
