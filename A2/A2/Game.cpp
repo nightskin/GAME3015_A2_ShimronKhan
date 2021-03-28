@@ -311,6 +311,47 @@ void Game::LoadTextures()
 		DesertTex->Resource, DesertTex->UploadHeap));
 
 	mTextures[DesertTex->Name] = std::move(DesertTex);
+
+	//Menu Sreen
+	auto MenuTex = std::make_unique<Texture>();
+	MenuTex->Name = "MenuTex";
+	MenuTex->Filename = L"../../Textures/Menu.dds";
+	ThrowIfFailed(DirectX::CreateDDSTextureFromFile12(md3dDevice.Get(),
+		mCommandList.Get(), MenuTex->Filename.c_str(),
+		MenuTex->Resource, MenuTex->UploadHeap));
+
+	mTextures[MenuTex->Name] = std::move(MenuTex);
+
+	//Title Screen
+	auto TitleTex = std::make_unique<Texture>();
+	TitleTex->Name = "TitleTex";
+	TitleTex->Filename = L"../../Textures/Title.dds";
+	ThrowIfFailed(DirectX::CreateDDSTextureFromFile12(md3dDevice.Get(),
+		mCommandList.Get(), TitleTex->Filename.c_str(),
+		TitleTex->Resource, TitleTex->UploadHeap));
+
+	mTextures[TitleTex->Name] = std::move(TitleTex);
+
+	//Pause Screen
+	auto PauseTex = std::make_unique<Texture>();
+	PauseTex->Name = "PauseTex";
+	PauseTex->Filename = L"../../Textures/Pause.dds";
+	ThrowIfFailed(DirectX::CreateDDSTextureFromFile12(md3dDevice.Get(),
+		mCommandList.Get(), PauseTex->Filename.c_str(),
+		PauseTex->Resource, PauseTex->UploadHeap));
+
+	mTextures[PauseTex->Name] = std::move(PauseTex);
+
+	//Selector Tex
+	auto SelectTex = std::make_unique<Texture>();
+	SelectTex->Name = "SelectorTex";
+	SelectTex->Filename = L"../../Textures/Selector.dds";
+	ThrowIfFailed(DirectX::CreateDDSTextureFromFile12(md3dDevice.Get(),
+		mCommandList.Get(), SelectTex->Filename.c_str(),
+		SelectTex->Resource, SelectTex->UploadHeap));
+
+	mTextures[SelectTex->Name] = std::move(SelectTex);
+
 }
 
 void Game::BuildRootSignature()
@@ -361,7 +402,7 @@ void Game::BuildDescriptorHeaps()
 	// Create the SRV heap.
 	//
 	D3D12_DESCRIPTOR_HEAP_DESC srvHeapDesc = {};
-	srvHeapDesc.NumDescriptors = 3;
+	srvHeapDesc.NumDescriptors = 7;
 	srvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
 	srvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
 	ThrowIfFailed(md3dDevice->CreateDescriptorHeap(&srvHeapDesc, IID_PPV_ARGS(&mSrvDescriptorHeap)));
@@ -374,6 +415,10 @@ void Game::BuildDescriptorHeaps()
 	auto EagleTex = mTextures["EagleTex"]->Resource;
 	auto RaptorTex = mTextures["RaptorTex"]->Resource;
 	auto DesertTex = mTextures["DesertTex"]->Resource;
+	auto MenuTex = mTextures["MenuTex"]->Resource;
+	auto PauseTex = mTextures["PauseTex"]->Resource;
+	auto SelectTex = mTextures["SelectorTex"]->Resource;
+	auto TitleTex = mTextures["TitleTex"]->Resource;
 
 	D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
 
@@ -408,6 +453,26 @@ void Game::BuildDescriptorHeaps()
 	hDescriptor.Offset(1, mCbvSrvDescriptorSize);
 	srvDesc.Format = DesertTex->GetDesc().Format;
 	md3dDevice->CreateShaderResourceView(DesertTex.Get(), &srvDesc, hDescriptor);
+
+	//Menu Descriptor
+	hDescriptor.Offset(1, mCbvSrvDescriptorSize);
+	srvDesc.Format = MenuTex->GetDesc().Format;
+	md3dDevice->CreateShaderResourceView(MenuTex.Get(), &srvDesc, hDescriptor);
+
+	//Pause Descriptor
+	hDescriptor.Offset(1, mCbvSrvDescriptorSize);
+	srvDesc.Format = PauseTex->GetDesc().Format;
+	md3dDevice->CreateShaderResourceView(PauseTex.Get(), &srvDesc, hDescriptor);
+
+	//Selector Descriptor
+	hDescriptor.Offset(1, mCbvSrvDescriptorSize);
+	srvDesc.Format = SelectTex->GetDesc().Format;
+	md3dDevice->CreateShaderResourceView(SelectTex.Get(), &srvDesc, hDescriptor);
+
+	//Title Descriptor
+	hDescriptor.Offset(1, mCbvSrvDescriptorSize);
+	srvDesc.Format = TitleTex->GetDesc().Format;
+	md3dDevice->CreateShaderResourceView(TitleTex.Get(), &srvDesc, hDescriptor);
 
 }
 
@@ -549,6 +614,45 @@ void Game::BuildMaterials()
 
 	mMaterials["Desert"] = std::move(Desert);
 
+	auto Menu = std::make_unique<Material>();
+	Menu->Name = "Menu";
+	Menu->MatCBIndex = 3;
+	Menu->DiffuseSrvHeapIndex = 3;
+	Menu->DiffuseAlbedo = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+	Menu->FresnelR0 = XMFLOAT3(0.05f, 0.05f, 0.05f);
+	Menu->Roughness = 0.2f;
+
+	mMaterials["Menu"] = std::move(Menu);
+
+	auto Pause = std::make_unique<Material>();
+	Pause->Name = "Pause";
+	Pause->MatCBIndex = 4;
+	Pause->DiffuseSrvHeapIndex = 4;
+	Pause->DiffuseAlbedo = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+	Pause->FresnelR0 = XMFLOAT3(0.05f, 0.05f, 0.05f);
+	Pause->Roughness = 0.2f;
+
+	mMaterials["Pause"] = std::move(Pause);
+
+	auto Selector = std::make_unique<Material>();
+	Selector->Name = "Selector";
+	Selector->MatCBIndex = 5;
+	Selector->DiffuseSrvHeapIndex = 5;
+	Selector->DiffuseAlbedo = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+	Selector->FresnelR0 = XMFLOAT3(0.05f, 0.05f, 0.05f);
+	Selector->Roughness = 0.2f;
+
+	mMaterials["Selector"] = std::move(Selector);
+
+	auto Title = std::make_unique<Material>();
+	Title->Name = "Title";
+	Title->MatCBIndex = 6;
+	Title->DiffuseSrvHeapIndex = 6;
+	Title->DiffuseAlbedo = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+	Title->FresnelR0 = XMFLOAT3(0.05f, 0.05f, 0.05f);
+	Title->Roughness = 0.2f;
+
+	mMaterials["Title"] = std::move(Title);
 }
 
 void Game::BuildRenderItems()
