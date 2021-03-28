@@ -416,9 +416,9 @@ void Game::BuildDescriptorHeaps()
 	auto RaptorTex = mTextures["RaptorTex"]->Resource;
 	auto DesertTex = mTextures["DesertTex"]->Resource;
 	auto MenuTex = mTextures["MenuTex"]->Resource;
+	auto TitleTex = mTextures["TitleTex"]->Resource;
 	auto PauseTex = mTextures["PauseTex"]->Resource;
 	auto SelectTex = mTextures["SelectorTex"]->Resource;
-	auto TitleTex = mTextures["TitleTex"]->Resource;
 	auto InstructionTex = mTextures["InstructionTex"]->Resource;
 
 	D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
@@ -460,6 +460,11 @@ void Game::BuildDescriptorHeaps()
 	srvDesc.Format = MenuTex->GetDesc().Format;
 	md3dDevice->CreateShaderResourceView(MenuTex.Get(), &srvDesc, hDescriptor);
 
+	//Title Descriptor
+	hDescriptor.Offset(1, mCbvSrvDescriptorSize);
+	srvDesc.Format = TitleTex->GetDesc().Format;
+	md3dDevice->CreateShaderResourceView(TitleTex.Get(), &srvDesc, hDescriptor);
+
 	//Pause Descriptor
 	hDescriptor.Offset(1, mCbvSrvDescriptorSize);
 	srvDesc.Format = PauseTex->GetDesc().Format;
@@ -470,12 +475,7 @@ void Game::BuildDescriptorHeaps()
 	srvDesc.Format = SelectTex->GetDesc().Format;
 	md3dDevice->CreateShaderResourceView(SelectTex.Get(), &srvDesc, hDescriptor);
 
-	//Title Descriptor
-	hDescriptor.Offset(1, mCbvSrvDescriptorSize);
-	srvDesc.Format = TitleTex->GetDesc().Format;
-	md3dDevice->CreateShaderResourceView(TitleTex.Get(), &srvDesc, hDescriptor);
-
-	//Title Descriptor
+	//Instructions Descriptor
 	hDescriptor.Offset(1, mCbvSrvDescriptorSize);
 	srvDesc.Format = InstructionTex->GetDesc().Format;
 	md3dDevice->CreateShaderResourceView(InstructionTex.Get(), &srvDesc, hDescriptor);
@@ -597,7 +597,6 @@ void Game::BuildMaterials()
 	Eagle->DiffuseAlbedo = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	Eagle->FresnelR0 = XMFLOAT3(0.05f, 0.05f, 0.05f);
 	Eagle->Roughness = 0.2f;
-
 	mMaterials["Eagle"] = std::move(Eagle);
 
 	auto Raptor = std::make_unique<Material>();
@@ -607,7 +606,6 @@ void Game::BuildMaterials()
 	Raptor->DiffuseAlbedo = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	Raptor->FresnelR0 = XMFLOAT3(0.05f, 0.05f, 0.05f);
 	Raptor->Roughness = 0.2f;
-
 	mMaterials["Raptor"] = std::move(Raptor);
 
 	auto Desert = std::make_unique<Material>();
@@ -617,7 +615,6 @@ void Game::BuildMaterials()
 	Desert->DiffuseAlbedo = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	Desert->FresnelR0 = XMFLOAT3(0.05f, 0.05f, 0.05f);
 	Desert->Roughness = 0.2f;
-
 	mMaterials["Desert"] = std::move(Desert);
 
 	auto Menu = std::make_unique<Material>();
@@ -627,38 +624,34 @@ void Game::BuildMaterials()
 	Menu->DiffuseAlbedo = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	Menu->FresnelR0 = XMFLOAT3(0.05f, 0.05f, 0.05f);
 	Menu->Roughness = 0.2f;
-
 	mMaterials["Menu"] = std::move(Menu);
+
+	auto Title = std::make_unique<Material>();
+	Title->Name = "Title";
+	Title->MatCBIndex = 4;
+	Title->DiffuseSrvHeapIndex = 4;
+	Title->DiffuseAlbedo = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+	Title->FresnelR0 = XMFLOAT3(0.05f, 0.05f, 0.05f);
+	Title->Roughness = 0.2f;
+	mMaterials["Title"] = std::move(Title);
 
 	auto Pause = std::make_unique<Material>();
 	Pause->Name = "Pause";
-	Pause->MatCBIndex = 4;
-	Pause->DiffuseSrvHeapIndex = 4;
+	Pause->MatCBIndex = 5;
+	Pause->DiffuseSrvHeapIndex = 5;
 	Pause->DiffuseAlbedo = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	Pause->FresnelR0 = XMFLOAT3(0.05f, 0.05f, 0.05f);
 	Pause->Roughness = 0.2f;
-
 	mMaterials["Pause"] = std::move(Pause);
 
 	auto Selector = std::make_unique<Material>();
 	Selector->Name = "Selector";
-	Selector->MatCBIndex = 5;
-	Selector->DiffuseSrvHeapIndex = 5;
+	Selector->MatCBIndex = 6;
+	Selector->DiffuseSrvHeapIndex = 6;
 	Selector->DiffuseAlbedo = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	Selector->FresnelR0 = XMFLOAT3(0.05f, 0.05f, 0.05f);
 	Selector->Roughness = 0.2f;
-
 	mMaterials["Selector"] = std::move(Selector);
-
-	auto Title = std::make_unique<Material>();
-	Title->Name = "Title";
-	Title->MatCBIndex = 6;
-	Title->DiffuseSrvHeapIndex = 6;
-	Title->DiffuseAlbedo = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
-	Title->FresnelR0 = XMFLOAT3(0.05f, 0.05f, 0.05f);
-	Title->Roughness = 0.2f;
-
-	mMaterials["Title"] = std::move(Title);
 
 	auto Instruction = std::make_unique<Material>();
 	Instruction->Name = "Instruction";
@@ -666,6 +659,7 @@ void Game::BuildMaterials()
 	Instruction->DiffuseSrvHeapIndex = 7;
 	Instruction->DiffuseAlbedo = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	Instruction->Roughness = 0.2f;
+	mMaterials["Instruction"] = std::move(Instruction);
 
 }
 

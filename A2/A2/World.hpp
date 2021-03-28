@@ -1,7 +1,9 @@
 #pragma once
 #include "World.hpp"
-#include "GameState.h"
 #include "TitleState.h"
+#include "MenuState.h"
+#include "GameState.h"
+
 #include "States.h"
 
 class World 
@@ -22,10 +24,13 @@ private:
 	};
 private:
 	Game* mGame;
+
 	States mCurrentState;
 	SceneNode* mSceneGraph;
 	GameState* mGameState;
 	TitleState* mTitleState;
+	MenuState* mMenuState;
+
 	std::array<SceneNode*, LayerCount> mSceneLayers;
 	ListenerManager listenerManager;
 	XMFLOAT4 mWorldBounds;

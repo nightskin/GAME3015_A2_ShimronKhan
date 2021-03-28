@@ -17,5 +17,5 @@ private:
 private:
 	Game* mGame;
 	ListenerManager	listenerManager;
-	SpriteNode* mTitleImg;
+	SpriteNode* mBg;
 };
