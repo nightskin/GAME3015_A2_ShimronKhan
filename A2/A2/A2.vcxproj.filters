@@ -81,6 +81,9 @@
     <ClCompile Include="InstructionState.cpp">
       <Filter>Added Files</Filter>
     </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Added Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.hpp">
@@ -150,6 +153,9 @@
       <Filter>Added Files</Filter>
     </ClInclude>
     <ClInclude Include="InstructionState.h">
+      <Filter>Added Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
       <Filter>Added Files</Filter>
     </ClInclude>
   </ItemGroup>

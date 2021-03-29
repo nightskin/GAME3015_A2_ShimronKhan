@@ -1,22 +1,16 @@
-#include "SceneNode.hpp"
-#include "SpriteNode.h"
+#include "State.h"
 #include "Player.h"
 #include "Enemy.h"
 
-class GameState
+class GameState : public State
 {
 public:
 	GameState(Game* window);
-	void update(const GameTimer& gt);
-	void getInputs(const GameTimer& gt);
-	void draw();
-	void load();
-public:
-	SceneNode* mWorld;
-	SceneNode* mSceneGraph;
+	void update(const GameTimer& gt) override;
+	void getInputs(const GameTimer& gt) override;
+	void draw() override;
+	void load() override;
 private:
-	ListenerManager	listenerManager;
-	Game* mGame;
 	Player* mPlayer;
 	SpriteNode* mBackground;
 	Enemy* mEnemy;

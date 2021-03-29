@@ -1,7 +1,7 @@
 #include "GameState.h"
 
 
-GameState::GameState(Game* window)
+GameState::GameState(Game* window) : State(window)
 {
 	mGame = window;
 	mSceneGraph = new SceneNode(window);

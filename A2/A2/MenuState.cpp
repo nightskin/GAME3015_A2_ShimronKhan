@@ -1,6 +1,6 @@
 #include "MenuState.h"
 
-MenuState::MenuState(Game* window)
+MenuState::MenuState(Game* window) : State(window)
 {
 	mGame = window;
 	mSceneGraph = new SceneNode(window);
@@ -44,7 +44,7 @@ void MenuState::load()
 {
 	std::unique_ptr<SpriteNode> bg(new SpriteNode(mGame, "Menu"));
 	mBg = bg.get();
-	mBg->setPosition(0, 0, 1);
+	mBg->setPosition(0, 0, 0);
 	mBg->setScale(15.0, 1.0, 15.0);
 	mBg->setWorldRotation(90 * XM_PI / 180, 0, 180 * XM_PI / 180);
 	mSceneGraph->attachChild(std::move(bg));

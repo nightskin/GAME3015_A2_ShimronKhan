@@ -84,7 +84,28 @@ void World::load()
 	mGameState = new GameState(mGame);
 	mGameState->mWorld = mSceneGraph;
 
-	SetState(States::TITLE_STATE);
+
+	std::unique_ptr<SceneNode> title(new SceneNode(mGame));
+	mTitleState->mSceneGraph = title.get();
+	mTitleState->load();
+	mSceneGraph->attachChild(std::move(title));
+
+	std::unique_ptr<SceneNode> menu(new SceneNode(mGame));
+	mMenuState->mSceneGraph = menu.get();
+	mMenuState->load();
+	mSceneGraph->attachChild(std::move(menu));
+
+	std::unique_ptr<SceneNode> instruct(new SceneNode(mGame));
+	mInstructionState->mSceneGraph = instruct.get();
+	mInstructionState->load();
+	mSceneGraph->attachChild(std::move(instruct));
+
+	std::unique_ptr<SceneNode> game(new SceneNode(mGame));
+	mGameState->mSceneGraph = game.get();
+	mGameState->load();
+	mSceneGraph->attachChild(std::move(game));
+
+	SetState(States::MENU_STATE);
 	mSceneGraph->build();
 }
 
@@ -94,32 +115,18 @@ void World::SetState(States state)
 
 	if (mCurrentState == States::TITLE_STATE)
 	{
-		std::unique_ptr<SceneNode> title(new SceneNode(mGame));
-		mTitleState->mSceneGraph = title.get();
-		mTitleState->load();
-		mSceneGraph->attachChild(std::move(title));
-
+		
 	}
 	if (mCurrentState == States::MENU_STATE)
 	{
-		std::unique_ptr<SceneNode> menu(new SceneNode(mGame));
-		mMenuState->mSceneGraph = menu.get();
-		mMenuState->load();
-		mSceneGraph->attachChild(std::move(menu));
+		
 	}
 	if (mCurrentState == States::INSTRUCTIONS_STATE)
 	{
-		std::unique_ptr<SceneNode> instruct(new SceneNode(mGame));
-		mInstructionState->mSceneGraph = instruct.get();
-		mInstructionState->load();
-		mSceneGraph->attachChild(std::move(instruct));
+		
 	}
 	if (mCurrentState == States::GAME_STATE)
 	{
-		std::unique_ptr<SceneNode> game(new SceneNode(mGame));
-		mGameState->mSceneGraph = game.get();
-		mGameState->load();
-		mSceneGraph->attachChild(std::move(game));
+		
 	}
 }
-

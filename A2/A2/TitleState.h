@@ -1,23 +1,15 @@
 #pragma once
-#include "SceneNode.hpp"
-#include "SpriteNode.h"
-#include "Input.h"
+#include "State.h"
 
 
-class TitleState
+class TitleState : public State
 {
 public:
 	TitleState(Game* window);
-	void update(const GameTimer& gt);
-	void getInputs(const GameTimer& gt);
-	void draw();
-	void load();
+	void update(const GameTimer& gt) override;
+	void getInputs(const GameTimer& gt) override;
+	void draw() override;
+	void load() override;
 public:
-	SceneNode* mWorld;
-	SceneNode* mSceneGraph;
-private:
-
-	Game* mGame;
-	ListenerManager	listenerManager;
 	SpriteNode* mBg;
 };
