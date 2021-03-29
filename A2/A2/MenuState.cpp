@@ -11,33 +11,42 @@ MenuState::MenuState(Game* window) : State(window)
 
 void MenuState::update(const GameTimer& gt)
 {
-	mSceneGraph->update(gt);
-	getInputs(gt);
+	if (Active())
+	{
+		mSceneGraph->update(gt);
+		getInputs(gt);
+	}
 }
 
 void MenuState::getInputs(const GameTimer& gt)
 {
-	if (listenerManager.CheckInput('W'))
+	if (Active())
 	{
-		if (option == 1)
+		if (listenerManager.CheckInput('W'))
 		{
-			mArrow->setPosition(-2.0f, -0.75f, 0.0f);
-			option = 0;
+			if (option == 1)
+			{
+				mArrow->setPosition(-2.0f, -0.75f, 0.0f);
+				option = 0;
+			}
 		}
-	}
-	else if (listenerManager.CheckInput('S'))
-	{
-		if (option  == 0)
+		else if (listenerManager.CheckInput('S'))
 		{
-			mArrow->setPosition(-3.0f, -2.75f, 0.0f);
-			option = 1;
+			if (option == 0)
+			{
+				mArrow->setPosition(-3.0f, -2.75f, 0.0f);
+				option = 1;
+			}
 		}
 	}
 }
 
 void MenuState::draw()
 {
-	mSceneGraph->draw();
+	if (Active())
+	{
+		mSceneGraph->draw();
+	}
 }
 
 void MenuState::load()

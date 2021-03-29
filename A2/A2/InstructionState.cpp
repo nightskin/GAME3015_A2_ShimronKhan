@@ -9,18 +9,27 @@ InstructionState::InstructionState(Game* window) : State(window)
 
 void InstructionState::update(const GameTimer& gt)
 {
-	mSceneGraph->update(gt);
-	getInputs(gt);
-
+	if (Active())
+	{
+		mSceneGraph->update(gt);
+		getInputs(gt);
+	}
 }
 
 void InstructionState::getInputs(const GameTimer& gt)
 {
+	if (Active())
+	{
+
+	}
 }
 
 void InstructionState::draw()
 {
-	mSceneGraph->draw();
+	if (Active())
+	{
+		mSceneGraph->draw();
+	}
 }
 
 void InstructionState::load()

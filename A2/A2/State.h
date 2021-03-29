@@ -12,9 +12,13 @@ public:
 	virtual void getInputs(const GameTimer& gt);
 	virtual void draw();
 	virtual void load();
+	void setActive(bool tf);
+	bool Active();
 public:
 	SceneNode* mWorld;
 	SceneNode* mSceneGraph;
 	ListenerManager	listenerManager;
 	Game* mGame;
+private:
+	bool active;
 };

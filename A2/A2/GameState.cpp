@@ -12,18 +12,27 @@ GameState::GameState(Game* window) : State(window)
 
 void GameState::update(const GameTimer& gt)
 {
-	mSceneGraph->update(gt);
-	getInputs(gt);
+	if (Active())
+	{
+		mSceneGraph->update(gt);
+		getInputs(gt);
+	}
 }
 
 void GameState::getInputs(const GameTimer& gt)
 {
-	mPlayer->input(gt);
+	if (Active())
+	{
+		mPlayer->input(gt);
+	}
 }
 
 void GameState::draw()
 {
-	mSceneGraph->draw();
+	if (Active())
+	{
+		mSceneGraph->draw();
+	}
 }
 
 void GameState::load()
