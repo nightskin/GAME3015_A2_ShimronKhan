@@ -15,7 +15,7 @@ public:
 	void getInputs(const GameTimer& gt);
 	void draw();
 	void load();
-	void SetState(States stste);
+	void SetState(State* stste);
 private:
 	enum Layer
 	{
@@ -25,7 +25,7 @@ private:
 	};
 private:
 	Game* mGame;
-	States mCurrentState;
+	State* mCurrentState;
 
 	SceneNode* mSceneGraph;
 	GameState* mGameState;

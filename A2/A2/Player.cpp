@@ -7,10 +7,10 @@ Player::Player(Game* game) : Entity(game)
 
 	//Create Listeners
 	Listener aKey;
-	aKey.key = 'A';
+	aKey.bindChar = 'A';
 	aKey.name = "AKey";
 	Listener dKey;
-	dKey.key = 'D';
+	dKey.bindChar = 'D';
 	dKey.name = "DKey";
 	// Add listeners to listener manager
 	listenerManager.AddListener(aKey);

@@ -68,10 +68,10 @@ void MenuState::load()
 	mSceneGraph->attachChild(std::move(arrow));
 
 	Listener up;
-	up.key = 'W';
+	up.bindChar = 'W';
 	up.name = "ToggleUP";
 	Listener down;
-	down.key = 'S';
+	down.bindChar = 'S';
 	down.name = "ToggleDOWN";
 
 	listenerManager.AddListener(up);

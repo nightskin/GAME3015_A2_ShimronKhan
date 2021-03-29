@@ -15,13 +15,24 @@ bool ListenerManager::CheckInput(char key)
 {
 	if (GetAsyncKeyState(key) & 0x8000)
 	{
-		for (int i = 0; i < listeners.size(); i++)
-		{
-			if (listeners[i].key == key)
-			{
-				eventList.push_back(listeners[i]);
-			}
-		}
+		return true;
+	}
+	return false;
+}
+
+bool ListenerManager::CheckInput(int key)
+{
+	if (GetAsyncKeyState(key) & 0x8000)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool ListenerManager::CheckListener(Listener ev)
+{
+	if (GetAsyncKeyState(ev.bindChar) & 0x8000 || GetAsyncKeyState(ev.bindInt) & 0x8000)
+	{
 		return true;
 	}
 	return false;
@@ -39,7 +50,7 @@ Listener ListenerManager::CurrentEvent()
 {
 	if (eventList.size() > 0)
 	{
-		if (CheckInput(eventList[eventList.size() - 1].key))
+		if (CheckInput(eventList[eventList.size() - 1].bindChar))
 		{
 			return eventList[eventList.size() - 1];
 		}

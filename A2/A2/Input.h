@@ -5,7 +5,8 @@
 
 struct Listener
 {
-	char key;
+	char bindChar;
+	int bindInt;
 	std::string name;
 };
 
@@ -15,6 +16,8 @@ public:
 	ListenerManager();
 	~ListenerManager();
 	bool CheckInput(char key);
+	bool CheckInput(int key);
+	bool CheckListener(Listener ev);
 	Listener PrevEvent();
 	Listener CurrentEvent();
 	void AddListener(Listener ev);

@@ -1,17 +1,5 @@
 #include "State.h"
 
-//State::State(Game* window)
-//{
-//	mGame = window;
-//	mSceneGraph = new SceneNode(window);
-//	active = false;
-//}
-
-//State::~State()
-//{
-//
-//}
-
 void State::update(const GameTimer& gt)
 {
 }

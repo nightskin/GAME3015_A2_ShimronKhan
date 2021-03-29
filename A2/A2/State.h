@@ -7,8 +7,6 @@
 class State
 {
 public:
-	//State(Game* window);
-	//~State();
 	virtual void update(const GameTimer& gt);
 	virtual void getInputs(const GameTimer& gt);
 	virtual void draw();
