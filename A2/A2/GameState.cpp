@@ -7,14 +7,16 @@ GameState::GameState(Game* window)
 	mSceneGraph = new SceneNode(window);
 	mPlayer = nullptr;
 	mBackground = nullptr;
-	mEnemy = nullptr;
+	mEnemy1 = nullptr;
+	mEnemy2 = nullptr;
 	mStateType = States::GAME_STATE;
 }
 
 void GameState::update(const GameTimer& gt)
 {
-		mSceneGraph->update(gt);
-		getInputs(gt);
+	mPlayer->update(gt);
+	mBackground->update(gt);
+	getInputs(gt);
 }
 
 void GameState::getInputs(const GameTimer& gt)
@@ -24,7 +26,8 @@ void GameState::getInputs(const GameTimer& gt)
 
 void GameState::draw()
 {
-	mSceneGraph->draw();
+	mPlayer->draw();
+	mBackground->draw();
 }
 
 void GameState::load()
@@ -37,17 +40,17 @@ void GameState::load()
 	mSceneGraph->attachChild(std::move(player));
 
 	std::unique_ptr<Enemy> enemy1(new Enemy(mGame));
-	auto raptor = enemy1.get();
-	raptor->setPosition(0.5, 3, 0);
-	raptor->setWorldRotation(90 * XM_PI / 180, 0, 0);
-	raptor->setScale(1, 1, 1);
+	mEnemy1 = enemy1.get();
+	mEnemy1->setPosition(0.5, 3.0f, 0.0f);
+	mEnemy1->setWorldRotation(90 * XM_PI / 180, 0, 0);
+	mEnemy1->setScale(1, 1, 1);
 	mSceneGraph->attachChild(std::move(enemy1));
 
 	std::unique_ptr<Enemy> enemy2(new Enemy(mGame));
-	auto raptor2 = enemy2.get();
-	raptor2->setPosition(-0.5, 3, 0);
-	raptor2->setWorldRotation(90 * XM_PI / 180, 0, 0);
-	raptor->setScale(1, 1, 1);
+	mEnemy2 = enemy2.get();
+	mEnemy2->setPosition(-0.5, 3.0f, 0);
+	mEnemy2->setWorldRotation(90 * XM_PI / 180, 0, 0);
+	mEnemy2->setScale(1, 1, 1);
 	mSceneGraph->attachChild(std::move(enemy2));
 
 	std::unique_ptr<SpriteNode> backgroundSprite(new SpriteNode(mGame, "Desert"));
@@ -57,4 +60,6 @@ void GameState::load()
 	mBackground->setWorldRotation(90 * XM_PI / 180, 0, 0);
 	mBackground->setVelocity(0, -2);
 	mSceneGraph->attachChild(std::move(backgroundSprite));
+	
+	mSceneGraph->build();
 }

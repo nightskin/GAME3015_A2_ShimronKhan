@@ -17,6 +17,5 @@ public:
 	SceneNode* mSceneGraph;
 	ListenerManager	listenerManager;
 	Game* mGame;
-private:
-	bool active;
+	bool mActive;
 };

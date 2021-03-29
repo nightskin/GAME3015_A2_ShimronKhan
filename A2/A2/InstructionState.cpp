@@ -10,8 +10,7 @@ InstructionState::InstructionState(Game* window)
 
 void InstructionState::update(const GameTimer& gt)
 {
-		mSceneGraph->update(gt);
-		getInputs(gt);
+	mBg->update(gt);
 }
 
 void InstructionState::getInputs(const GameTimer& gt)
@@ -21,7 +20,7 @@ void InstructionState::getInputs(const GameTimer& gt)
 
 void InstructionState::draw()
 {
-	mSceneGraph->draw();
+	mBg->draw();
 }
 
 void InstructionState::load()
@@ -32,4 +31,5 @@ void InstructionState::load()
 	mBg->setScale(12.0, 1.0, 9.0);
 	mBg->setWorldRotation(90 * XM_PI / 180, 0, 180 * XM_PI / 180);
 	mSceneGraph->attachChild(std::move(bg));
+	mSceneGraph->build();
 }

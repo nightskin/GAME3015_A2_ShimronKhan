@@ -25,6 +25,7 @@ private:
 private:
 	Game* mGame;
 	State* mCurrentState;
+	std::vector<State*> mAllState;
 
 	SceneNode* mSceneGraph;
 	GameState* mGameState;

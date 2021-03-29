@@ -10,7 +10,7 @@ TitleState::TitleState(Game* window)
 
 void TitleState::update(const GameTimer& gt)
 {
-	mSceneGraph->update(gt);
+	mBg->update(gt);
 	getInputs(gt);
 }
 
@@ -21,7 +21,7 @@ void TitleState::getInputs(const GameTimer& gt)
 
 void TitleState::draw()
 {
-	mSceneGraph->draw();
+	mBg->draw();
 }
 
 void TitleState::load()
@@ -32,11 +32,7 @@ void TitleState::load()
 	mBg->setScale(15.0, 1.0, 15.0);
 	mBg->setWorldRotation(90 * XM_PI / 180, 0, 180 * XM_PI /180);
 	mSceneGraph->attachChild(std::move(titleImg));
-
-	Listener start;
-	start.bindChar = ' ';
-	start.name = "start";
-
-	listenerManager.AddListener(start);
+	mSceneGraph->build();
+	
 }
 

@@ -13,5 +13,6 @@ public:
 private:
 	Player* mPlayer;
 	SpriteNode* mBackground;
-	Enemy* mEnemy;
+	Enemy* mEnemy1;
+	Enemy* mEnemy2;
 };

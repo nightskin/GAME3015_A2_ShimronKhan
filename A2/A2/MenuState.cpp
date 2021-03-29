@@ -12,7 +12,8 @@ MenuState::MenuState(Game* window)
 
 void MenuState::update(const GameTimer& gt)
 {
-	mSceneGraph->update(gt);
+	mBg->update(gt);
+	mArrow->update(gt);
 	getInputs(gt);
 }
 
@@ -22,7 +23,7 @@ void MenuState::getInputs(const GameTimer& gt)
 		{
 			if (option == 1)
 			{
-				mArrow->setPosition(-2.0f, -0.75f, 0.0f);
+				mArrow->setPosition(-2.0f, -0.75f, 0);
 				option = 0;
 			}
 		}
@@ -30,7 +31,7 @@ void MenuState::getInputs(const GameTimer& gt)
 		{
 			if (option == 0)
 			{
-				mArrow->setPosition(-3.0f, -2.75f, 0.0f);
+				mArrow->setPosition(-3.0f, -2.75f, 0);
 				option = 1;
 			}
 		}
@@ -38,7 +39,8 @@ void MenuState::getInputs(const GameTimer& gt)
 
 void MenuState::draw()
 {
-	mSceneGraph->draw();
+	mBg->draw();
+	mArrow->draw();
 }
 
 void MenuState::load()
@@ -53,10 +55,11 @@ void MenuState::load()
 
 	std::unique_ptr<SpriteNode> arrow(new SpriteNode(mGame, "Selector"));
 	mArrow = arrow.get();
-	mArrow->setPosition(-2.0f, -0.75f, 0.0f);
+	mArrow->setPosition(-2.0f, -0.75f, 0);
 	mArrow->setScale(1.0, 1.0, 1.0);
 	mArrow->setWorldRotation(90 * XM_PI / 180, 0, 180 * XM_PI / 180);
 	mSceneGraph->attachChild(std::move(arrow));
+	mSceneGraph->build();
 
 	Listener up;
 	up.bindChar = 'W';
