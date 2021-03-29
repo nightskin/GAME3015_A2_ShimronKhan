@@ -1,10 +1,11 @@
 #include "InstructionState.h"
 
-InstructionState::InstructionState(Game* window) : State(window)
+InstructionState::InstructionState(Game* window) 
 {
 	mGame = window;
 	mSceneGraph = new SceneNode(window);
 	mBg = nullptr;
+	mStateType = States::INSTRUCTIONS_STATE;
 }
 
 void InstructionState::update(const GameTimer& gt)

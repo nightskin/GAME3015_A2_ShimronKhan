@@ -2,12 +2,13 @@
 #include "Input.h"
 #include "SceneNode.hpp"
 #include "SpriteNode.h"
+#include "StateList.h"
 
 class State
 {
 public:
-	State(Game* window);
-	~State();
+	//State(Game* window);
+	//~State();
 	virtual void update(const GameTimer& gt);
 	virtual void getInputs(const GameTimer& gt);
 	virtual void draw();
@@ -15,6 +16,7 @@ public:
 	void setActive(bool tf);
 	bool Active();
 public:
+	States mStateType;
 	SceneNode* mWorld;
 	SceneNode* mSceneGraph;
 	ListenerManager	listenerManager;

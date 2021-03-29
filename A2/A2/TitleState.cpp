@@ -1,10 +1,11 @@
 #include "TitleState.h"
 
-TitleState::TitleState(Game* window) : State(window)
+TitleState::TitleState(Game* window) 
 {
 	mGame = window;
 	mSceneGraph = new SceneNode(window);
 	mBg = nullptr;
+	mStateType = States::TITLE_STATE;
 }
 
 void TitleState::update(const GameTimer& gt)

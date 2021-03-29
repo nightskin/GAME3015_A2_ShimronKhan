@@ -25,8 +25,8 @@ private:
 	};
 private:
 	Game* mGame;
-
 	States mCurrentState;
+
 	SceneNode* mSceneGraph;
 	GameState* mGameState;
 	TitleState* mTitleState;

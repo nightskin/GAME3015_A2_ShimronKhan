@@ -1,13 +1,14 @@
 #include "GameState.h"
 
 
-GameState::GameState(Game* window) : State(window)
+GameState::GameState(Game* window)
 {
 	mGame = window;
 	mSceneGraph = new SceneNode(window);
 	mPlayer = nullptr;
 	mBackground = nullptr;
 	mEnemy = nullptr;
+	mStateType = States::GAME_STATE;
 }
 
 void GameState::update(const GameTimer& gt)
