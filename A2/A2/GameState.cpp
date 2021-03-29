@@ -59,5 +59,4 @@ void GameState::load()
 
 	//mSceneGraph->build();
 
-
 }

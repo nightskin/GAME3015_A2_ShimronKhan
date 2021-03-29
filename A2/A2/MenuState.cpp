@@ -66,6 +66,4 @@ void MenuState::load()
 
 	listenerManager.AddListener(up);
 	listenerManager.AddListener(down);
-
-	//mSceneGraph->build();
 }

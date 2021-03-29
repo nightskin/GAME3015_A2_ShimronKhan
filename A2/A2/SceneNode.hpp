@@ -60,7 +60,6 @@ public:
 
 	void					attachChild(Ptr child);
 	Ptr						detachChild(const SceneNode& node);
-
 	void					update(const GameTimer& gt);
 	void					draw() const;
 	void					build();

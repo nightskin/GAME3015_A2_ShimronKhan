@@ -19,7 +19,7 @@ void World::update(const GameTimer& gt)
 	}
 	else if (mCurrentState == States::TITLE_STATE)
 	{
-		//mTitleState->update(gt);
+		mTitleState->update(gt);
 	}
 	else if (mCurrentState == States::MENU_STATE)
 	{
@@ -40,7 +40,7 @@ void World::getInputs(const GameTimer& gt)
 	}
 	else if (mCurrentState == States::TITLE_STATE)
 	{
-		//mTitleState->getInputs(gt);
+		mTitleState->getInputs(gt);
 	}
 	else if (mCurrentState == States::MENU_STATE)
 	{
@@ -60,7 +60,7 @@ void World::draw()
 	}
 	else if (mCurrentState == States::TITLE_STATE)
 	{
-		//mTitleState->draw();
+		mTitleState->draw();
 	}
 	else if (mCurrentState == States::MENU_STATE)
 	{
@@ -76,12 +76,16 @@ void World::load()
 {
 	
 	mTitleState = new TitleState(mGame);
+	mTitleState->mWorld = mSceneGraph;
 	mMenuState = new MenuState(mGame);
+	mMenuState->mWorld = mSceneGraph;
 	mInstructionState = new InstructionState(mGame);
+	mInstructionState->mWorld = mSceneGraph;
 	mGameState = new GameState(mGame);
-	
+	mGameState->mWorld = mSceneGraph;
+
 	SetState(States::TITLE_STATE);
-	
+	mSceneGraph->build();
 }
 
 void World::SetState(States state)
@@ -90,19 +94,32 @@ void World::SetState(States state)
 
 	if (mCurrentState == States::TITLE_STATE)
 	{
+		std::unique_ptr<SceneNode> title(new SceneNode(mGame));
+		mTitleState->mSceneGraph = title.get();
 		mTitleState->load();
+		mSceneGraph->attachChild(std::move(title));
+
 	}
 	if (mCurrentState == States::MENU_STATE)
 	{
+		std::unique_ptr<SceneNode> menu(new SceneNode(mGame));
+		mMenuState->mSceneGraph = menu.get();
 		mMenuState->load();
+		mSceneGraph->attachChild(std::move(menu));
 	}
 	if (mCurrentState == States::INSTRUCTIONS_STATE)
 	{
+		std::unique_ptr<SceneNode> instruct(new SceneNode(mGame));
+		mInstructionState->mSceneGraph = instruct.get();
 		mInstructionState->load();
+		mSceneGraph->attachChild(std::move(instruct));
 	}
 	if (mCurrentState == States::GAME_STATE)
 	{
+		std::unique_ptr<SceneNode> game(new SceneNode(mGame));
+		mGameState->mSceneGraph = game.get();
 		mGameState->load();
+		mSceneGraph->attachChild(std::move(game));
 	}
 }
 

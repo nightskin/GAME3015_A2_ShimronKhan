@@ -6,6 +6,7 @@ c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\a2\x6
 c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\a2\x64\debug\scenenode.obj
 c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\a2\x64\debug\player.obj
 c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\a2\x64\debug\main.obj
+c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\a2\x64\debug\gamestate.obj
 c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\a2\x64\debug\game.obj
 c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\a2\x64\debug\frameresource.obj
 c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\a2\x64\debug\entity.obj
@@ -17,7 +18,9 @@ c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\a2\x6
 c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\a2\x64\debug\d3dutil.obj
 c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\a2\x64\debug\d3dapp.obj
 c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\a2\x64\debug\camera.obj
-c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\a2\x64\debug\gamestate.obj
+c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\a2\x64\debug\titlestate.obj
+c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\a2\x64\debug\menustate.obj
+c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\a2\x64\debug\instructionstate.obj
 c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\x64\debug\a2.exe
 c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\x64\debug\a2.ilk
 c:\users\angel\desktop\school\game engine dev 2\game3015_a2_shimronkhan\a2\x64\debug\a2.pdb
