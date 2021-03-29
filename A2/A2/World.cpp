@@ -8,14 +8,6 @@ World::World(Game* window)
 	mWorldBounds = XMFLOAT4(-1.5f, 1.5f, 200.0f, 0.0f); //Left, Right, Down, Up
 	mSpawnPosition = XMFLOAT2(0.f, 0.f);
 	mScrollSpeed = 1.0f;
-	// States
-	mGameState = new GameState(window);
-	mTitleState = new TitleState(window);
-	mMenuState = new MenuState(window);
-	mInstructionState = new InstructionState(window);
-
-	//start state
-	mCurrentState = States::INSTRUCTIONS_STATE;
 }
 
 void World::update(const GameTimer& gt)
@@ -27,7 +19,7 @@ void World::update(const GameTimer& gt)
 	}
 	else if (mCurrentState == States::TITLE_STATE)
 	{
-		mTitleState->update(gt);
+		//mTitleState->update(gt);
 	}
 	else if (mCurrentState == States::MENU_STATE)
 	{
@@ -48,7 +40,7 @@ void World::getInputs(const GameTimer& gt)
 	}
 	else if (mCurrentState == States::TITLE_STATE)
 	{
-		mTitleState->getInputs(gt);
+		//mTitleState->getInputs(gt);
 	}
 	else if (mCurrentState == States::MENU_STATE)
 	{
@@ -68,7 +60,7 @@ void World::draw()
 	}
 	else if (mCurrentState == States::TITLE_STATE)
 	{
-		mTitleState->draw();
+		//mTitleState->draw();
 	}
 	else if (mCurrentState == States::MENU_STATE)
 	{
@@ -82,21 +74,35 @@ void World::draw()
 
 void World::load()
 {
-	if (mCurrentState == States::GAME_STATE)
-	{
-		mGameState->load();
-	}
-	else if (mCurrentState == States::TITLE_STATE)
+	
+	mTitleState = new TitleState(mGame);
+	mMenuState = new MenuState(mGame);
+	mInstructionState = new InstructionState(mGame);
+	mGameState = new GameState(mGame);
+	
+	SetState(States::TITLE_STATE);
+	
+}
+
+void World::SetState(States state)
+{
+	mCurrentState = state;
+
+	if (mCurrentState == States::TITLE_STATE)
 	{
 		mTitleState->load();
 	}
-	else if (mCurrentState == States::MENU_STATE)
+	if (mCurrentState == States::MENU_STATE)
 	{
 		mMenuState->load();
 	}
-	else if (mCurrentState == States::INSTRUCTIONS_STATE)
+	if (mCurrentState == States::INSTRUCTIONS_STATE)
 	{
 		mInstructionState->load();
+	}
+	if (mCurrentState == States::GAME_STATE)
+	{
+		mGameState->load();
 	}
 }
 

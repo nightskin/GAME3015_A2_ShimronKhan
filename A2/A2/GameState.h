@@ -12,6 +12,7 @@ public:
 	void draw();
 	void load();
 public:
+	SceneNode* mWorld;
 	SceneNode* mSceneGraph;
 private:
 	ListenerManager	listenerManager;

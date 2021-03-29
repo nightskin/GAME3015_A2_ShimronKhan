@@ -15,7 +15,7 @@ public:
 	void getInputs(const GameTimer& gt);
 	void draw();
 	void load();
-
+	void SetState(States stste);
 private:
 	enum Layer
 	{

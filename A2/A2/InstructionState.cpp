@@ -32,7 +32,5 @@ void InstructionState::load()
 	mBg->setWorldRotation(90 * XM_PI / 180, 0, 180 * XM_PI / 180);
 	mSceneGraph->attachChild(std::move(bg));
 
-	
-
-	mSceneGraph->build();
+	//mSceneGraph->build();
 }

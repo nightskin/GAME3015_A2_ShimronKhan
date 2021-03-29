@@ -57,7 +57,7 @@ void GameState::load()
 	mBackground->setVelocity(0, -2);
 	mSceneGraph->attachChild(std::move(backgroundSprite));
 
-	mSceneGraph->build();
+	//mSceneGraph->build();
 
 
 }

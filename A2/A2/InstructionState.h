@@ -11,7 +11,8 @@ public:
 	void getInputs(const GameTimer& gt);
 	void draw();
 	void load();
-private:
+public:
+	SceneNode* mWorld;
 	SceneNode* mSceneGraph;
 private:
 	Game* mGame;
