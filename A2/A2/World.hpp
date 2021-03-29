@@ -4,7 +4,6 @@
 #include "MenuState.h"
 #include "GameState.h"
 #include "InstructionState.h"
-
 #include "StateList.h"
 
 class World 
@@ -15,7 +14,7 @@ public:
 	void getInputs(const GameTimer& gt);
 	void draw();
 	void load();
-	void SetState(State* stste);
+	void SetState(State* state);
 private:
 	enum Layer
 	{

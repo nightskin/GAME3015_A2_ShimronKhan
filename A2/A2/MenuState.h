@@ -10,7 +10,6 @@ public:
 	void draw() override;
 	void load() override;
 public:
-	SceneNode* mWorld;
 	SceneNode* mSceneGraph;
 private:
 	Game* mGame;

@@ -11,5 +11,4 @@ public:
 	void load() override;
 public:
 	SpriteNode* mBg;
-	
 };

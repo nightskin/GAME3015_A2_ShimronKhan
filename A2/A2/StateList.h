@@ -1,9 +1,11 @@
 #pragma once
+
 /// <summary>
 /// ----Need To do
 /// State switching
 /// Pause Game state
 /// </summary>
+
 enum class States
 {
 	NONE,
@@ -12,3 +14,4 @@ enum class States
 	GAME_STATE,
 	INSTRUCTIONS_STATE
 };
+

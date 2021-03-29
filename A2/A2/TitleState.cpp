@@ -10,27 +10,18 @@ TitleState::TitleState(Game* window)
 
 void TitleState::update(const GameTimer& gt)
 {
-	if (Active())
-	{
-		mSceneGraph->update(gt);
-		getInputs(gt);
-	}
+	mSceneGraph->update(gt);
+	getInputs(gt);
 }
 
 void TitleState::getInputs(const GameTimer& gt)
 {
-	if (Active())
-	{
-
-	}
+	
 }
 
 void TitleState::draw()
 {
-	if (Active())
-	{
-		mSceneGraph->draw();
-	}
+	mSceneGraph->draw();
 }
 
 void TitleState::load()

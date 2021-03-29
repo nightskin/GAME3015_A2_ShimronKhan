@@ -13,27 +13,18 @@ GameState::GameState(Game* window)
 
 void GameState::update(const GameTimer& gt)
 {
-	if (Active())
-	{
 		mSceneGraph->update(gt);
 		getInputs(gt);
-	}
 }
 
 void GameState::getInputs(const GameTimer& gt)
 {
-	if (Active())
-	{
-		mPlayer->input(gt);
-	}
+	mPlayer->input(gt);
 }
 
 void GameState::draw()
 {
-	if (Active())
-	{
-		mSceneGraph->draw();
-	}
+	mSceneGraph->draw();
 }
 
 void GameState::load()
@@ -66,7 +57,4 @@ void GameState::load()
 	mBackground->setWorldRotation(90 * XM_PI / 180, 0, 0);
 	mBackground->setVelocity(0, -2);
 	mSceneGraph->attachChild(std::move(backgroundSprite));
-
-	//mSceneGraph->build();
-
 }

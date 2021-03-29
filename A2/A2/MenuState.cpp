@@ -12,17 +12,12 @@ MenuState::MenuState(Game* window)
 
 void MenuState::update(const GameTimer& gt)
 {
-	if (Active())
-	{
-		mSceneGraph->update(gt);
-		getInputs(gt);
-	}
+	mSceneGraph->update(gt);
+	getInputs(gt);
 }
 
 void MenuState::getInputs(const GameTimer& gt)
 {
-	if (Active())
-	{
 		if (listenerManager.CheckInput('W'))
 		{
 			if (option == 1)
@@ -39,15 +34,11 @@ void MenuState::getInputs(const GameTimer& gt)
 				option = 1;
 			}
 		}
-	}
 }
 
 void MenuState::draw()
 {
-	if (Active())
-	{
-		mSceneGraph->draw();
-	}
+	mSceneGraph->draw();
 }
 
 void MenuState::load()

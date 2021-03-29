@@ -13,87 +13,49 @@ World::World(Game* window)
 	mMenuState = new MenuState(mGame);
 	mInstructionState = new InstructionState(mGame);
 	mGameState = new GameState(mGame);
+	
 	mCurrentState = new State();
+	mCurrentState->mStateType = States::NONE;
+	
+
 }
 
 void World::update(const GameTimer& gt)
 {
 	getInputs(gt);
-	if (mCurrentState->mStateType == States::TITLE_STATE)
-	{
-		mTitleState->update(gt);
-	}
-	if (mCurrentState->mStateType == States::MENU_STATE)
-	{
-		mMenuState->update(gt);
-	}
-	if (mCurrentState->mStateType == States::INSTRUCTIONS_STATE)
-	{
-		mInstructionState->update(gt);
-	}
-	if (mCurrentState->mStateType == States::GAME_STATE)
-	{
-		mGameState->update(gt);
-	}
+	mCurrentState->update(gt);
 }
 
 void World::getInputs(const GameTimer& gt)
 {
-	if (mCurrentState->mStateType == States::TITLE_STATE)
-	{
-		mTitleState->getInputs(gt);
-	}
-	if (mCurrentState->mStateType == States::MENU_STATE)
-	{
-		mMenuState->getInputs(gt);
-	}
-	if (mCurrentState->mStateType == States::INSTRUCTIONS_STATE)
-	{
-		mInstructionState->getInputs(gt);
-	}
-	if (mCurrentState->mStateType == States::GAME_STATE)
-	{
-		mGameState->getInputs(gt);
-	}
-
+	mCurrentState->getInputs(gt);
 }
 
 void World::draw()
 {
-	if (mCurrentState->mStateType == States::TITLE_STATE)
-	{
-		mTitleState->draw();
-	}
-	if (mCurrentState->mStateType == States::MENU_STATE)
-	{
-		mMenuState->draw();
-	}
-	if (mCurrentState->mStateType == States::INSTRUCTIONS_STATE)
-	{
-		mInstructionState->draw();
-	}
-	if (mCurrentState->mStateType == States::GAME_STATE)
-	{
-		mGameState->draw();
-	}
+	mCurrentState->draw();
 }
 
 void World::load()
 {	
-	SetState(mGameState);
+	SetState(mTitleState);
+	mSceneGraph->build();
 }
 
 void World::SetState(State* state)
 {
-	//Deactivate prev state
+	//Deactivate state
+	if (mCurrentState->mStateType != States::NONE)
+	{
+		mSceneGraph->detachChild(*mCurrentState->mSceneGraph);
+	}
 	
 	//Set new State
 	mCurrentState = state;
+	
 	//Activate new State
 	std::unique_ptr<SceneNode> s (new SceneNode(mGame));
 	mCurrentState->mSceneGraph = s.get();
-	mCurrentState->setActive(true);
 	mCurrentState->load();
-	mSceneGraph->attachChild(std::move(s));
-	mSceneGraph->build();
+	mSceneGraph->attachChild(std::move(s));	
 }

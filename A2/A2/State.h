@@ -11,8 +11,6 @@ public:
 	virtual void getInputs(const GameTimer& gt);
 	virtual void draw();
 	virtual void load();
-	void setActive(bool tf);
-	bool Active();
 public:
 	States mStateType;
 	SceneNode* mWorld;
