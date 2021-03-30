@@ -52,7 +52,7 @@ void World::load()
 void World::SetState(State* state)
 {
 	mCurrentState->mActive = false;
-
+	std::cout << getCurrentState() << std::endl;
 	state->mActive = true;
 	mCurrentState = state;
 	
@@ -63,11 +63,9 @@ void World::SetState(State* state)
 		mCurrentState->load();
 		mSceneGraph->attachChild(std::move(s));
 		mSceneGraph->build();
-		std::cout << "" << std::endl;
+		std::cout << getCurrentState() << std::endl;
 	}
 }
-
-
 
 std::string World::getCurrentState()
 {
@@ -79,19 +77,47 @@ std::string World::getCurrentState()
 	{
 		if (mCurrentState->mStateType == States::TITLE_STATE)
 		{
-			return "Title State";
+			if (mCurrentState->mActive)
+			{
+				return "Title State Active";
+			}
+			else
+			{
+				return "Title State Not Active";
+			}
 		}
 		else if (mCurrentState->mStateType == States::MENU_STATE)
 		{
-			return "Menu State";
+			if (mCurrentState->mActive)
+			{
+				return "Menu State Active";
+			}
+			else
+			{
+				return "Menu State Not Active";
+			}
 		}
 		else if (mCurrentState->mStateType == States::INSTRUCTIONS_STATE)
 		{
-			return "Instruction State";
+			if (mCurrentState->mActive)
+			{
+				return "Instructions State Active";
+			}
+			else
+			{
+				return "Instructions State Not Active";
+			}
 		}
 		else if (mCurrentState->mStateType == States::GAME_STATE)
 		{
-			return "Game State";
+			if (mCurrentState->mActive)
+			{
+				return "Game State Active";
+			}
+			else
+			{
+				return "Game State Not Active";
+			}
 		}
 	}
 }
