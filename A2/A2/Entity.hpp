@@ -1,11 +1,10 @@
 #pragma once
 #include "SceneNode.hpp"
 
-class Entity :
-    public SceneNode
+class Entity : public SceneNode
 {
 public:
-	Entity(Game* game);
+	Entity(Game* game, std::string name);
 	void				setVelocity(XMFLOAT2 velocity);
 	void				setVelocity(float vx, float vy);
 	XMFLOAT2			getVelocity() const;
@@ -13,5 +12,6 @@ public:
 
 public:
 	XMFLOAT2		mVelocity;
+	std::string		mName;
 };
 

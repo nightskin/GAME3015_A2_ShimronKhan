@@ -1,7 +1,8 @@
 #include "SceneNode.hpp"
 #include "Game.hpp"
+#include <iostream>
 
-SceneNode::SceneNode(Game* game)
+SceneNode::SceneNode(Game* game, std::string name)
 	: mChildren()
 	, mParent(nullptr)
 	, game(game)
@@ -70,6 +71,15 @@ void SceneNode::build()
 {
 	buildCurrent();
 	buildChildren();
+}
+
+void SceneNode::DebugSceneNode()
+{
+	for (int i = 0; i < mChildren.size(); i++)
+	{
+		std::cout << mChildren[i]->nName << std::endl;
+	}
+
 }
 
 void SceneNode::buildCurrent()

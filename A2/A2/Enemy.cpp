@@ -1,9 +1,10 @@
 #include "Enemy.h"
 #include "Game.hpp"
 
-Enemy::Enemy(Game* game) : Entity(game)
+Enemy::Enemy(Game* game, std::string name) : Entity(game, name)
 {
 	mSprite = "Raptor";
+	mName = name;
 }
 
 void Enemy::drawCurrent() const

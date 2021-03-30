@@ -15,6 +15,7 @@ public:
 	void draw();
 	void load();
 	void SetState(State* state);
+	std::string getCurrentState();
 private:
 	enum Layer
 	{
@@ -25,7 +26,7 @@ private:
 private:
 	Game* mGame;
 	State* mCurrentState;
-	std::vector<State*> mAllState;
+	//std::vector<State*> mAllStates;
 
 	SceneNode* mSceneGraph;
 	GameState* mGameState;

@@ -1,10 +1,10 @@
 #include "Player.h"
 #include "Game.hpp"
 
-Player::Player(Game* game) : Entity(game)
+Player::Player(Game* game, std::string name) : Entity(game, name)
 {
 	mSprite = "Eagle";
-
+	mName = "Player";
 	//Create Listeners
 	Listener aKey;
 	aKey.bindChar = 'A';

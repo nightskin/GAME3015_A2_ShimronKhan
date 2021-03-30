@@ -1,9 +1,10 @@
 #include "SpriteNode.h"
 #include "Game.hpp"
 
-SpriteNode::SpriteNode(Game* game, std::string spr) : Entity(game)
+SpriteNode::SpriteNode(Game* game, std::string spr, std::string name) : Entity(game, name)
 {
 	mSprite = spr;
+	mName = name;
 }
 
 void SpriteNode::drawCurrent() const

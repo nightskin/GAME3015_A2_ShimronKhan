@@ -5,7 +5,7 @@
 class Enemy : public Entity
 {
 public:
-	Enemy(Game* game);
+	Enemy(Game* game, std::string name);
 private:
 	virtual void		drawCurrent() const;
 	virtual void		buildCurrent();

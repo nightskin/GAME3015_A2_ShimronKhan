@@ -17,5 +17,6 @@ public:
 	SceneNode* mSceneGraph;
 	ListenerManager	listenerManager;
 	Game* mGame;
+	float mOrder;
 	bool mActive;
 };

@@ -6,7 +6,7 @@
 class Player :public Entity
 {
 public:
-	Player(Game* game);
+	Player(Game* game ,std::string name);
 	virtual void		input(const GameTimer& gt);
 private:
 	virtual void		drawCurrent() const;

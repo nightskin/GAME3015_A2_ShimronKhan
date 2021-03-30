@@ -1,7 +1,8 @@
 #include "Entity.hpp"
 
-Entity::Entity(Game* game) : SceneNode(game), mVelocity(0, 0)
+Entity::Entity(Game* game, std::string name) : SceneNode(game, name), mVelocity(0, 0)
 {
+	mName = name;
 }
 
 void Entity::setVelocity(XMFLOAT2 velocity)

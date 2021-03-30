@@ -56,14 +56,14 @@ public:
 
 
 public:
-	SceneNode(Game* game);
+	SceneNode(Game* game,  std::string name);
 
 	void					attachChild(Ptr child);
 	Ptr						detachChild(const SceneNode& node);
 	void					update(const GameTimer& gt);
 	void					draw() const;
 	void					build();
-
+	void					DebugSceneNode();
 	XMFLOAT3				getWorldPosition() const;
 	void					setPosition(float x, float y, float z);
 	XMFLOAT3				getWorldRotation() const;
@@ -93,5 +93,6 @@ private:
 	XMFLOAT3				mWorldScaling;
 	std::vector<Ptr>		mChildren;
 	SceneNode*				mParent;
+	std::string				nName;
 };
 
